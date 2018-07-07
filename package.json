@@ -1,6 +1,6 @@
 {
   "name": "react-native-auth",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "To install this module, run `npm i -S react-native-auth` from your project.",
   "main": "index.js",
   "dependencies": {
