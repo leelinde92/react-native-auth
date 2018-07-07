@@ -22,9 +22,10 @@ export default class Authentication
             scope
         })
             .then(response => {
+                let { data } = response;
                 this.tokens.save(
-                    response.access_token,
-                    response.refresh_token
+                    data.access_token,
+                    data.refresh_token
                 );
             });
     }
@@ -50,9 +51,10 @@ export default class Authentication
             scope
         })
             .then(response => {
+                let { data } = response;
                 this.tokens.save(
-                    response.access_token,
-                    response.refresh_token
+                    data.access_token,
+                    data.refresh_token
                 );
             });
     }
