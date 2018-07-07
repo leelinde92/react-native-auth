@@ -18,16 +18,16 @@ export default class Authentication
         const CancelToken = axios.CancelToken;
         this.source = CancelToken.source();
         return await axios.post(`${this.url}/oauth/token`, {
-            grant_type: `password`,
-            client_id,
-            client_secret,
-            username,
-            password,
-            scope
-        },
-        {
-            cancelToken: this.source.token
-        })
+                grant_type: `password`,
+                client_id,
+                client_secret,
+                username,
+                password,
+                scope
+            },
+            {
+                cancelToken: this.source.token
+            })
             .then(response => {
                 let { data } = response;
                 this.tokens.save(
@@ -41,13 +41,16 @@ export default class Authentication
 
     async validate()
     {
-        await axios.get(`${this.url}/oauth/clients`, {
-            headers: {
-                'Authorization': `Bearer ${this.tokens.access}`
-            }
-        })
-            .then(() => { return true })
-            .catch(() => { return false });
+        await this.tokens.getAccessToken()
+            .then(token => {
+                axios.get(`${this.url}/oauth/clients`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                    .then(() => { return Promise(true) })
+                    .catch(() => { return Promise(false) });
+            });
     }
 
     async refresh(scope = '')

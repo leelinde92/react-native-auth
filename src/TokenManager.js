@@ -9,10 +9,14 @@ export default class TokenManager
     access = null;
     refresh = null;
 
-    constructor()
+    async getAccessToken()
     {
-        this.access = SecureStore.getItemAsync(NAME_ACCESS_TOKEN);
-        this.refresh = SecureStore.getItemAsync(NAME_REFRESH_TOKEN);
+        return await SecureStore.getItemAsync(NAME_ACCESS_TOKEN);
+    }
+
+    async getRefreshToken()
+    {
+        return await SecureStore.getItemAsync(NAME_REFRESH_TOKEN);
     }
 
     save(token, refresh)
