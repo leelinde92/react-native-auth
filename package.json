@@ -1,0 +1,25 @@
+{
+  "name": "react-native-auth",
+  "version": "1.0.0",
+  "description": "To install this module, run `npm i -S react-native-auth` from your project.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "expo": "^28.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leelinde92/react-native-auth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leelinde92/react-native-auth/issues"
+  },
+  "homepage": "https://github.com/leelinde92/react-native-auth#readme"
+}
