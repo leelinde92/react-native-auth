@@ -4,6 +4,8 @@ import TokenManager from "./TokenManager";
 export default class Authentication
 {
 
+    source = null;
+
     constructor(url)
     {
         this.url = url;
@@ -13,6 +15,8 @@ export default class Authentication
     async authenticate(auth)
     {
         let { client_id, client_secret, username, password, scope = '' } = auth;
+        const CancelToken = axios.CancelToken;
+        this.source = CancelToken.source();
         return await axios.post(`${this.url}/oauth/token`, {
             grant_type: `password`,
             client_id,
@@ -20,6 +24,9 @@ export default class Authentication
             username,
             password,
             scope
+        },
+        {
+            cancelToken: source.token
         })
             .then(response => {
                 let { data } = response;
@@ -59,6 +66,14 @@ export default class Authentication
                     data.refresh_token
                 );
             });
+    }
+
+    cancel()
+    {
+        if(this.source !== null)
+        {
+            this.source.cancel("Stopping authentication.");
+        }
     }
 
 }
