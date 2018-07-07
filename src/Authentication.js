@@ -39,20 +39,6 @@ export default class Authentication
             });
     }
 
-    async validate()
-    {
-        await this.tokens.getAccessToken()
-            .then(token => {
-                axios.get(`${this.url}/oauth/clients`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
-                    .then(() => { return Promise(true) })
-                    .catch(() => { return Promise(false) });
-            });
-    }
-
     async refresh(scope = '')
     {
         await axios.get(`${this.url}/oauth/token`, {
