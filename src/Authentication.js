@@ -27,6 +27,8 @@ export default class Authentication
                     data.access_token,
                     data.refresh_token
                 );
+
+                return Promise.resolve(data);
             });
     }
 
