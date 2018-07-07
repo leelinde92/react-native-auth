@@ -26,7 +26,7 @@ export default class Authentication
             scope
         },
         {
-            cancelToken: source.token
+            cancelToken: this.source.token
         })
             .then(response => {
                 let { data } = response;
