@@ -13,7 +13,7 @@ export default class Authentication
     async authenticate(auth)
     {
         let { client_id, client_secret, username, password, scope = '' } = auth;
-        await axios.post(`${this.url}/oauth/token`, {
+        return await axios.post(`${this.url}/oauth/token`, {
             grant_type: `password`,
             client_id,
             client_secret,
@@ -27,8 +27,6 @@ export default class Authentication
                     data.access_token,
                     data.refresh_token
                 );
-
-                return Promise.resolve(data);
             });
     }
 
