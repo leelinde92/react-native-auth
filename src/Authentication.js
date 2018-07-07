@@ -10,8 +10,9 @@ export default class Authentication
         this.tokens = new TokenManager();
     }
 
-    async authenticate(client_id, client_secret, username, password, scope = '')
+    async authenticate(auth)
     {
+        let { client_id, client_secret, username, password, scope = '' } = auth;
         await axios.post(`${this.url}/oauth/token`, {
             grant_type: `password`,
             client_id,
