@@ -24,7 +24,7 @@ export default class TokenManager
 
     async remove()
     {
-        await SecureStore.deleteItemAsync(NAME_ACCESS_TOKEN)
+        return await SecureStore.deleteItemAsync(NAME_ACCESS_TOKEN)
             .then(() => SecureStore.deleteItemAsync(NAME_REFRESH_TOKEN)
                 .then(() => Promise.resolve(true)));
     }
