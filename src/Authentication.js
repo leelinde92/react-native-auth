@@ -39,11 +39,11 @@ export default class Authentication
             });
     }
 
-    async refresh(scope = '')
+    async refresh(token, scope = '')
     {
         await axios.get(`${this.url}/oauth/token`, {
             grant_type: `refresh_token`,
-            refresh_token: this.tokens.refresh,
+            refresh_token: token,
             client_id,
             client_secret,
             scope
