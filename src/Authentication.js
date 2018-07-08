@@ -60,6 +60,11 @@ export default class Authentication
             .catch(() => Promise.resolve(false));
     }
 
+    async logout()
+    {
+
+    }
+
     cancel()
     {
         if(this.source !== null)

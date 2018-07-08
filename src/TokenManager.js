@@ -22,4 +22,11 @@ export default class TokenManager
         SecureStore.setItemAsync(NAME_REFRESH_TOKEN, refresh);
     }
 
+    async remove()
+    {
+        await SecureStore.deleteItemAsync(NAME_ACCESS_TOKEN)
+            .then(() => SecureStore.deleteItemAsync(NAME_REFRESH_TOKEN)
+                .then(() => Promise.resolve(true)));
+    }
+
 }
