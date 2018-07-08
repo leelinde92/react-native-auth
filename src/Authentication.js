@@ -62,7 +62,7 @@ export default class Authentication
 
     async logout()
     {
-
+        await this.tokens.remove();
     }
 
     cancel()
