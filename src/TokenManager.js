@@ -6,9 +6,6 @@ export const NAME_REFRESH_TOKEN = "REFRESH_TOKEN";
 export default class TokenManager
 {
 
-    access = null;
-    refresh = null;
-
     async getAccessToken()
     {
         return await SecureStore.getItemAsync(NAME_ACCESS_TOKEN);
@@ -23,9 +20,6 @@ export default class TokenManager
     {
         SecureStore.setItemAsync(NAME_ACCESS_TOKEN, token);
         SecureStore.setItemAsync(NAME_REFRESH_TOKEN, refresh);
-
-        this.access = token;
-        this.refresh = refresh;
     }
 
 }
